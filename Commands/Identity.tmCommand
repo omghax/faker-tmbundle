@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+require 'rubygems'
+require 'faker'
+
+name = Faker::Name.name
+
+address = [
+  name,
+  Faker::Address.street_address,
+  Faker::Address.secondary_address,
+  [
+    Faker::Address.city,
+    Faker::Address.us_state,
+    Faker::Address.zip_code
+  ].join(', '),
+  'United States',
+  Faker::PhoneNumber.phone_number,
+  Faker::Internet.email(name)
+].join("\n")
+
+print address
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^F</string>
+	<key>name</key>
+	<string>Identity</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>C76ADFD1-1911-422F-82FD-7811511EA469</string>
+</dict>
+</plist>
